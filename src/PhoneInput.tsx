@@ -19,14 +19,15 @@ export default function PhoneInput({ label, setLabel, phoneNo, setPhoneNo }: Pro
       const contacts = await (navigator.contacts as any).select(props, opts);
 
       if (contacts.length > 0) {
-        const tel = String(contacts[0].tel).replace(/[^a-zA-Z0-9]/g, "");
+        // const tel = String(contacts[0].tel).replace(/[^a-zA-Z0-9]/g, "");
 
-        if (tel.startsWith("62")) {
-          setPhoneNo(tel.replace("62", "0"));
-        } else {
-          setPhoneNo(tel);
-        }
+        // if (tel.startsWith("62")) {
+        //   setPhoneNo(tel.replace("62", "0"));
+        // } else {
+        //   setPhoneNo(tel);
+        // }
 
+        setPhoneNo(contacts[0].tel);
         setLabel(contacts[0].name);
       }
     } catch (error) {
